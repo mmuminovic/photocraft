@@ -3148,3 +3148,12 @@ cameraData	Lens	렌즈
 	Show Original	원본 표시
 	F cycles the views; hold X to see the image	F로 보기 전환, X를 누르고 있으면 이미지 표시
 	Show rulers	눈금자 표시
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	AI 에이전트는 데스크톱 앱에서만 사용할 수 있습니다.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	에이전트 제어가 꺼져 있습니다(환경 설정 › 통합 › 에이전트 제어 허용).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	열린 문서에서 바꿀 내용을 설명하세요. 예: "대비를 높이고 배경을 흐리게 해 줘."
+	Message	메시지
+	New Chat	새 채팅
+	Send	보내기
+	Stopped.	중지됨.
+	Stop	중지

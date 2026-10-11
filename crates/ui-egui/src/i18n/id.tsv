@@ -2969,3 +2969,11 @@ cameraData	Lens	Lensa
 	Show Original	Tampilkan Asli
 	F cycles the views; hold X to see the image	F berganti tampilan; tahan X untuk melihat gambar
 	Show rulers	Tampilkan Penggaris
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	Agen AI hanya tersedia di aplikasi desktop.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Kontrol agen dinonaktifkan (Preferensi › Integrasi › Izinkan Kontrol Agen).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Jelaskan apa yang ingin diubah pada dokumen yang terbuka, misalnya: "Tingkatkan kontras dan buramkan latar belakang."
+	Message	Pesan
+	New Chat	Obrolan Baru
+	Send	Kirim
+	Stopped.	Dihentikan.

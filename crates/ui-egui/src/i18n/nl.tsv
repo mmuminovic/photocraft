@@ -3731,3 +3731,11 @@ cameraData	Lens	Lens
 	Include in playback	Opnemen in afspelen
 	Scale:	Schaal:
 	Snap to Origin	Uitlijnen op oorsprong
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	AI-agents zijn alleen beschikbaar in de desktop-app.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Besturing door agents is uitgeschakeld (Voorkeuren › Integraties › Besturing door agents toestaan).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Beschrijf wat er in het geopende document moet veranderen, bijvoorbeeld: "Verhoog het contrast en vervaag de achtergrond."
+	Message	Bericht
+	New Chat	Nieuwe chat
+	Send	Verzenden
+	Stopped.	Gestopt.

@@ -16,15 +16,28 @@ use photocraft_ui_egui::control::{REPLY_DEADLINE, timeout_error};
 use serde_json::{Value, json};
 
 pub fn start(port: u16, token: String, ctx: egui::Context) -> Receiver<ControlRequest> {
-    let (tx, rx) = channel::<ControlRequest>();
     let listener = match TcpListener::bind(("127.0.0.1", port)) {
         Ok(l) => l,
         Err(e) => {
             eprintln!("photocraft: control server failed to bind 127.0.0.1:{port}: {e}");
-            return rx;
+            return channel::<ControlRequest>().1;
         }
     };
     eprintln!("photocraft: control server listening on 127.0.0.1:{port}");
+    serve_listener(listener, token, ctx)
+}
+
+/// Starts the control server on a free loopback port (the agent panel's bridge), returning the
+/// requests and the port.
+pub fn start_ephemeral(token: String, ctx: egui::Context) -> std::io::Result<(Receiver<ControlRequest>, u16)> {
+    let listener = TcpListener::bind(("127.0.0.1", 0))?;
+    let port = listener.local_addr()?.port();
+    log::info!("agent control server listening on 127.0.0.1:{port}");
+    Ok((serve_listener(listener, token, ctx), port))
+}
+
+fn serve_listener(listener: TcpListener, token: String, ctx: egui::Context) -> Receiver<ControlRequest> {
+    let (tx, rx) = channel::<ControlRequest>();
     std::thread::spawn(move || {
         let limiter = ConnectionLimiter::new(MAX_CONNECTIONS);
         let token = Arc::new(token);

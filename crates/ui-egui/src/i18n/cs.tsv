@@ -2573,3 +2573,12 @@ cameraData	Lens	Objektiv
 	Show Original	Zobrazit originál
 	F cycles the views; hold X to see the image	F přepíná zobrazení; podržením X uvidíte obraz
 	Show rulers	Zobrazit pravítka
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	AI agenti jsou dostupní jen v desktopové aplikaci.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Ovládání agenty je vypnuté (Předvolby › Integrace › Povolit ovládání agenty).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Popište, co se má v otevřeném dokumentu změnit, například: „Zvyš kontrast a rozmaž pozadí.“
+	Message	Zpráva
+	New Chat	Nový chat
+	Send	Odeslat
+	Stopped.	Zastaveno.
+	Stop	Zastavit

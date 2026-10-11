@@ -2550,3 +2550,12 @@ cameraData	Lens	鏡頭
 	Select the crop presets to delete	選取要刪除的裁切預設集
 	Enter a name for the crop preset	輸入裁切預設集的名稱
 	There is no crop size or ratio to save	沒有可儲存的裁切尺寸或比例
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	AI 代理僅在桌面應用程式中可用。
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	代理控制已關閉(偏好設定 › 整合 › 允許代理控制)。
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	描述要在開啟的文件中變更的內容,例如:「提高對比並模糊背景。」
+	Message	訊息
+	New Chat	新對話
+	Send	傳送
+	Stopped.	已停止。
+	Stop	停止

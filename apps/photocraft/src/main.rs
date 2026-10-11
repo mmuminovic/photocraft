@@ -20,6 +20,7 @@
 #![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
+mod agent;
 mod app_dirs;
 mod app_icon;
 mod appearance;
@@ -136,6 +137,12 @@ mod control_port_tests {
 }
 
 fn main() -> eframe::Result {
+    // The MCP server Claude Code / Codex start for the agent panel: no window, no log file (it
+    // would rotate the window's log), stdout is the MCP channel.
+    let raw_args: Vec<std::ffi::OsString> = std::env::args_os().skip(1).collect();
+    if raw_args.first().is_some_and(|a| a == "--mcp-bridge") {
+        std::process::exit(agent::mcp_bridge_main(&raw_args));
+    }
     // First, so the panic hook and every start-up warning are recorded (`logging`).
     let logger = logging::install();
     crash_guard::install_hook();
@@ -263,6 +270,9 @@ fn main() -> eframe::Result {
     } else {
         None
     };
+    // The agent panel reuses the launch's control channel; with none (or `--control 0`, whose
+    // port is unknown) it starts its own at the first message.
+    let agent_endpoint = control.as_ref().filter(|(port, _, _)| *port != 0).map(|(port, token, _)| (*port, token.clone()));
     // Finder / Dock / Open With deliver files as Apple events, not arguments; catch the one that
     // launched us as well as later ones. Lives until the event loop returns.
     #[cfg(target_os = "macos")]
@@ -434,6 +444,7 @@ fn main() -> eframe::Result {
                 let rx = control_server::start(port, token, cc.egui_ctx.clone());
                 app = app.with_control(rx);
             }
+            app.services.agent = Some(agent::service(agent_endpoint));
             #[cfg(target_os = "macos")]
             {
                 app.services.os_events = Some(apple_events.connect(&cc.egui_ctx));

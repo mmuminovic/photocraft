@@ -3,6 +3,26 @@
 
 use serde::{Deserialize, Serialize};
 
+/// A coding agent CLI the agent panel can drive PhotoCraft with, through its MCP tools.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub enum AgentKind {
+    Claude,
+    Codex,
+}
+
+impl AgentKind {
+    pub const ALL: [AgentKind; 2] = [AgentKind::Claude, AgentKind::Codex];
+
+    /// The product name, shown on the title bar button and the panel.
+    pub fn label(self) -> &'static str {
+        match self {
+            AgentKind::Claude => "Claude Code",
+            AgentKind::Codex => "Codex",
+        }
+    }
+}
+
 /// Shared selection and capture for a point curve; document parameters remain with the host.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase", default)]
@@ -1082,6 +1102,9 @@ pub struct UiState {
     pub theme: crate::theme::ThemeKind,
     pub workspace: String,
     pub palette_open: bool,
+    /// The AI agent panel (`agent_panel`): which coding agent it talks to, or `None` when closed.
+    #[serde(default)]
+    pub agent_panel: Option<AgentKind>,
     pub dock_tabs: DockTabs,
     /// Right-dock group order, heights and collapsed groups (see `dock`).
     #[serde(default)]
@@ -1210,6 +1233,7 @@ impl Default for UiState {
             theme: crate::theme::ThemeKind::ProMedium,
             workspace: "Essentials".into(),
             palette_open: false,
+            agent_panel: None,
             dock_tabs: DockTabs::default(),
             dock: Default::default(),
             docking: None,

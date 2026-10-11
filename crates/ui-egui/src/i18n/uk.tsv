@@ -3667,3 +3667,11 @@ cameraData	Lens	Об'єктив
 	There is no crop size or ratio to save	Немає розміру чи співвідношення сторін кадрування для збереження
 	Scale:	Масштаб:
 	Snap to Origin	Прив'язати до початку координат
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	ШІ-агенти доступні лише в настільному застосунку.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Керування агентами вимкнено (Налаштування › Інтеграції › Дозволити керування агентами).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Опишіть, що змінити у відкритому документі, наприклад: «Підвищ контраст і розмий тло».
+	Message	Повідомлення
+	New Chat	Новий чат
+	Send	Надіслати
+	Stopped.	Зупинено.

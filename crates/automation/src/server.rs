@@ -402,6 +402,16 @@ impl PhotocraftMcp {
         self.serve_io(tokio::io::stdin(), tokio::io::stdout()).await
     }
 
+    /// [`Self::serve_stdio`] on its own runtime, for callers without one (the desktop app's
+    /// `--mcp-bridge` mode, which coding agents start).
+    pub fn serve_stdio_blocking(self) -> Result<(), AutomationError> {
+        let rt = tokio::runtime::Builder::new_multi_thread()
+            .enable_all()
+            .build()
+            .map_err(|e| AutomationError::Other(format!("cannot start the MCP runtime: {e}")))?;
+        rt.block_on(self.serve_stdio())
+    }
+
     /// Run `f` on the headless session on a blocking thread.
     async fn headless_op<T: Send + 'static>(
         &self,

@@ -645,6 +645,10 @@ pub fn title_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
                             crate::links::open(app, ui.ctx(), crate::links::DISCORD);
                         }
                     }
+                    // Claude Code and Codex (desktop only), while there is room for them.
+                    if ui.available_width() >= AGENT_ROOM {
+                        crate::agent_panel::title_bar_buttons(app, ui);
+                    }
                     if rtl { ui.min_rect().right() } else { ui.min_rect().left() }
                 };
                 free = if rtl { (controls_end, menus_end) } else { (menus_end, controls_end) };
@@ -703,6 +707,8 @@ pub fn sync_window_title(app: &mut PhotocraftApp, ctx: &egui::Context) {
 const TITLE_GAP: f32 = 16.0;
 /// Free room the title bar needs after its other controls to show the Discord button.
 const DISCORD_ROOM: f32 = 120.0;
+/// Room the Claude Code and Codex buttons need in the title bar.
+const AGENT_ROOM: f32 = 190.0;
 /// The workspace switcher's narrowest width, and one 28 pt title-bar icon with its spacing.
 const WORKSPACE_MIN: f32 = 90.0;
 const ICON_SLOT: f32 = 34.0;

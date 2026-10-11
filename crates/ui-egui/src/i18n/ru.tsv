@@ -2911,3 +2911,11 @@ cameraData	Lens	Объектив
 	Select the crop presets to delete	Выберите наборы параметров кадрирования для удаления
 	Enter a name for the crop preset	Введите имя набора параметров кадрирования
 	There is no crop size or ratio to save	Нет размера или соотношения сторон кадрирования для сохранения
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	ИИ-агенты доступны только в настольном приложении.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Управление агентами отключено (Настройки › Интеграции › Разрешить управление агентами).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Опишите, что изменить в открытом документе, например: «Повысь контраст и размой фон».
+	Message	Сообщение
+	New Chat	Новый чат
+	Send	Отправить
+	Stopped.	Остановлено.

@@ -3665,3 +3665,11 @@ cameraData	Lens	Φακός
 	Show Original	Εμφάνιση αρχικού
 	F cycles the views; hold X to see the image	Το F εναλλάσσει τις προβολές· κρατήστε το X για να δείτε την εικόνα
 	Show rulers	Εμφάνιση χαράκων
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	Οι πράκτορες AI είναι διαθέσιμοι μόνο στην εφαρμογή υπολογιστή.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Ο έλεγχος από πράκτορες είναι απενεργοποιημένος (Προτιμήσεις › Ενσωματώσεις › Να επιτρέπεται ο έλεγχος από πράκτορες).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Περιγράψτε τι να αλλάξει στο ανοιχτό έγγραφο, για παράδειγμα: «Αύξησε την αντίθεση και θόλωσε το φόντο.»
+	Message	Μήνυμα
+	New Chat	Νέα συνομιλία
+	Send	Αποστολή
+	Stopped.	Διακόπηκε.

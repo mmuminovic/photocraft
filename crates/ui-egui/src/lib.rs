@@ -19,6 +19,7 @@ pub mod adjust_dialog;
 pub mod adjust_editors;
 pub mod adjust_preview;
 pub mod adjust_ui;
+pub mod agent_panel;
 mod alt_grab;
 pub mod analysis_ui;
 pub mod anchor_tools;
@@ -432,6 +433,9 @@ pub struct Services {
     /// while AppKit's run loop is still going crashes or hangs Touch Bar Macs (#1575, #1458).
     /// Without one, eframe closes the window and the app ends with it.
     pub quit: Option<QuitFn>,
+    /// Starts Claude Code or Codex for the agent panel (desktop; see `agent_panel`). `None`
+    /// hides the panel's title bar buttons.
+    pub agent: Option<agent_panel::AgentStartFn>,
 }
 
 /// A document histogram being computed off the UI thread: (document, revision, receiver of
@@ -518,6 +522,8 @@ pub struct PhotocraftApp {
     /// the frame the pointer leaves, so a long stationary hover never counts as elapsed time
     /// (#2022); set by `notices::show`.
     pub(crate) notices_hovered: bool,
+    /// The agent panel's conversations and running agent (`agent_panel`).
+    pub(crate) agent: agent_panel::Runtime,
     /// Apply theme on first frame.
     styled: bool,
     /// Whether the window uses an integrated (transparent) macOS title bar.
@@ -708,6 +714,7 @@ impl PhotocraftApp {
             live_adjust: None,
             frame: 0,
             notices_hovered: false,
+            agent: Default::default(),
             styled: false,
             integrated_titlebar: false,
             custom_titlebar: false,
@@ -1609,6 +1616,7 @@ impl eframe::App for PhotocraftApp {
         let t = theme::Tokens::get(&ctx);
         let backdrop = if chrome { prefs_ui::pasteboard_color(self).unwrap_or(t.canvas) } else { egui::Color32::BLACK };
         egui::CentralPanel::default().frame(egui::Frame::NONE.fill(backdrop)).show(ui, |ui| {
+            self.agent.area = Some(ui.available_rect_before_wrap());
             canvas::document_area(self, ui);
         });
         panels::properties_window(self, &ctx);
@@ -1629,6 +1637,7 @@ impl eframe::App for PhotocraftApp {
         camera_raw_ui::show(self, &ctx);
         wide_angle_ui::show(self, &ctx);
         canvas::extra_windows(self, &ctx);
+        agent_panel::show(self, &ctx);
         notices::show(self, &ctx);
         gpu_status::show_fallback(self, &ctx);
         kys_import::show_offer(self, &ctx);
@@ -2191,6 +2200,8 @@ mod new_doc_remember_tests;
 #[cfg(test)]
 mod hidden_layer_tests;
 
+#[cfg(test)]
+mod agent_panel_tests;
 #[cfg(test)]
 mod blend_dropdown_keys_tests;
 

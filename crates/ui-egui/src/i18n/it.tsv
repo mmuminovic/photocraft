@@ -2636,3 +2636,12 @@ cameraData	Lens	Obiettivo
 	Show Original	Mostra originale
 	F cycles the views; hold X to see the image	F scorre le viste; tieni premuto X per vedere l'immagine
 	Show rulers	Mostra righelli
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	Gli agenti IA sono disponibili solo nell'app desktop.
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	Il controllo tramite agenti è disattivato (Preferenze › Integrazioni › Consenti controllo agenti).
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	Descrivi cosa cambiare nel documento aperto, ad esempio: "Aumenta il contrasto e sfoca lo sfondo."
+	Message	Messaggio
+	New Chat	Nuova chat
+	Send	Invia
+	Stopped.	Interrotto.
+	Stop	Interrompi

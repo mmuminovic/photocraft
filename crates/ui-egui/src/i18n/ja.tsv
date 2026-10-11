@@ -3579,3 +3579,11 @@ cameraData	Lens	レンズ
 	Show Original	元の状態を表示
 	F cycles the views; hold X to see the image	F で表示を切り替え、X を押している間は画像を表示
 	Show rulers	定規を表示
+# Agent panel (Claude Code / Codex)
+	AI agents are only available in the desktop app.	AI エージェントはデスクトップアプリでのみ使用できます。
+	Agent control is turned off (Preferences › Integrations › Allow Agent Control).	エージェントによる操作はオフです(環境設定 › 統合 › エージェントによる操作を許可)。
+	Describe what to change in the open document, for example: "Increase the contrast and blur the background."	開いているドキュメントで変更したい内容を説明してください。例:「コントラストを上げて背景をぼかして。」
+	Message	メッセージ
+	New Chat	新しいチャット
+	Send	送信
+	Stopped.	停止しました。
